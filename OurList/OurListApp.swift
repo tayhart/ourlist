@@ -7,11 +7,14 @@
 
 import SwiftUI
 
+@available(iOS 17.0, *)
 @main
 struct OurListApp: App {
+    @State private var modelData = ModelData()
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environment(modelData)
         }
     }
 }

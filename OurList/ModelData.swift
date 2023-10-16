@@ -6,8 +6,14 @@
 //
 
 import Foundation
+import Observation
 
-var testData: OurList = load("testData.json")
+@available(iOS 17.0, *)
+@Observable
+class ModelData {
+    var testData: OurList = load("testData.json")
+}
+
 
 func load<T: Decodable>(_ filename: String) -> T {
 

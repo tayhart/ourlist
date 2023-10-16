@@ -10,13 +10,19 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         VStack {
-            ShoppingList()
+            if #available(iOS 17.0, *) {
+                ListView()
+            } else {
+                // Fallback on earlier versions
+            }
         }
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
+#Preview {
+    if #available(iOS 17.0, *) {
+        ContentView().environment(ModelData())
+    } else {
         ContentView()
     }
 }

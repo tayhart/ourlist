@@ -11,5 +11,9 @@ struct ListItem: Hashable, Codable, Identifiable {
     var id: Int
     var name: String
     var notes: String
-    var completed: Bool
+    var isDone: Bool
+
+    mutating func setDone(_ state: Bool) {
+        isDone = state
+    }
 }

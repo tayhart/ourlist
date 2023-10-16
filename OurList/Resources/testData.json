@@ -1,29 +1,29 @@
 {
-    "name": "Shopping",
+    "name": "Groceries",
     "items": [
         {
             "id": 1001,
             "name": "Chicken thigh",
             "notes": "Bone-in and skin on",
-            "completed": false
+            "isDone": false
         },
         {
             "id": 1002,
             "name": "Basmati rice",
             "notes": "",
-            "completed": false
+            "isDone": false
         },
         {
             "id": 1003,
             "name": "oatmeal",
             "notes": "",
-            "completed": true
+            "isDone": true
         },
         {
             "id": 1004,
             "name": "Butter",
             "notes": "",
-            "completed": false
+            "isDone": false
         },
     ]
 }
