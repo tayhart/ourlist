@@ -17,7 +17,6 @@ struct ListItemView: View {
     }
 }
 
-@available(iOS 17.0, *)
 #Preview {
-    ListItemView(listItem: ModelData().testData.items[0])
+    ListItemView(listItem: ListItem(id: 10003, name: "Test", notes: "None", isDone: false))
 }

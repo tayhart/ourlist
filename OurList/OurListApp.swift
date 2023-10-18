@@ -5,16 +5,18 @@
 //  Created by Taylor Hartman on 10/9/23.
 //
 
+import FirebaseCore
 import SwiftUI
 
-@available(iOS 17.0, *)
 @main
 struct OurListApp: App {
-    @State private var modelData = ModelData()
+    init() {
+        FirebaseApp.configure()
+    }
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environment(modelData)
+            MainView()
         }
     }
 }
