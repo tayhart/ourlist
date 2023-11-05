@@ -6,34 +6,55 @@
 //
 
 import SwiftUI
+import FirebaseFirestoreSwift
 
 struct ListView: View {
-    @StateObject var viewModel = ListViewModel()
-    @State private var filterByNotCompleted = false
+    @StateObject var viewModel: ListViewModel
+    @FirestoreQuery var items: [ListItem]
 
-    var filteredList: [ListItem] {
-        viewModel.listItems.filter { item in
-            (!filterByNotCompleted || !item.isDone)
-        }
+    private let userId: String
+
+    init(userId: String) {
+        self.userId = userId
+        self._items = FirestoreQuery(collectionPath: "users/\(userId)/todos")
+
+        self._viewModel = StateObject(
+            wrappedValue: ListViewModel(userId: userId)
+        )
     }
 
     var body: some View {
         NavigationView {
-            List {
-                Toggle(isOn: $filterByNotCompleted) {
-                    Text("Show only not completed")
+            VStack {
+                List(items) { item in
+                    ListItemView(listItem: item)
+                        .swipeActions {
+                            Button {
+                                //Delete
+                                viewModel.deleteItem(item.id)
+                            } label: {
+                                Text("Delete")
+                            }
+                            .tint(.red)
+                        }
                 }
-
-                ForEach(filteredList) { listItem in
-                    ListItemView(listItem: listItem)
-                }
-                .listRowSeparator(.hidden)
+                .listStyle(.plain)
             }
-            .navigationTitle("Test")
+            .navigationTitle("List")
+            .toolbar {
+                Button {
+                    viewModel.showingNewItemView = true
+                } label: {
+                    Image(systemName: "plus")
+                }
+            }
+            .sheet(isPresented: $viewModel.showingNewItemView) {
+                NewItemView(newItemPresented: $viewModel.showingNewItemView)
+            }
         }
     }
 }
 
 #Preview {
-    ListView()
+    ListView(userId: "2iZsrS0iVsQLWidEX6W8QNoexp13")
 }

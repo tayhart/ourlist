@@ -5,23 +5,28 @@
 //  Created by Taylor Hartman on 10/16/23.
 //
 
+import FirebaseFirestore
 import Foundation
 
 class ListViewModel: ObservableObject {
-    @Published var listItems: [ListItem]
     @Published var listName: String = ""
+    @Published var showingNewItemView: Bool = false
 
-    init() {
-        // Temporary test data
-        listItems = [
-            ListItem(id: 1, name: "VOU 787", notes: "", isDone: false),
-            ListItem(id: 2, name: "FINA", notes: "", isDone: false),
-            ListItem(id: 3, name: "NADIE SABE", notes: "", isDone: true),
-            ListItem(id: 4, name: "MR OCTOBER", notes: "", isDone: false),
-            ListItem(id: 5, name: "CYBERTRUCK", notes: "", isDone: true),
-            ListItem(id: 6, name: "PERRO NEGRO", notes: "", isDone: false)
-        ]
+    private let userId: String
+    
+    /// Delete todolist item
+    /// - Parameter userId: user id of the logged in user
+    init(userId: String) {
+        self.userId = userId
+    }
 
-        listName = "Test"
+    func deleteItem(_ id: String) {
+        let db = Firestore.firestore()
+
+        db.collection("users")
+            .document(userId)
+            .collection("todos")
+            .document(id)
+            .delete()
     }
 }

@@ -8,8 +8,10 @@
 import Foundation
 
 struct ListItem: Hashable, Codable, Identifiable {
-    var id: Int
+    let id: String
     var name: String
+    let dueDate: TimeInterval
+    let createdDate: TimeInterval
     var notes: String
     var isDone: Bool
 
