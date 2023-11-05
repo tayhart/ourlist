@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ListItemView: View {
-    @StateObject var viewModel = ProfileViewModel()
+    @StateObject var viewModel = ListItemViewModel()
 
     var listItem: ListItem
     var body: some View {

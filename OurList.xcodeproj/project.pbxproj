@@ -37,6 +37,7 @@
 		34E61FFC2AE850F7005FF86E /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E61FFB2AE850F7005FF86E /* ProfileViewModel.swift */; };
 		34E61FFE2AE9A61C005FF86E /* NewItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E61FFD2AE9A61C005FF86E /* NewItemView.swift */; };
 		34E620002AE9A6D6005FF86E /* NewItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E61FFF2AE9A6D6005FF86E /* NewItemViewModel.swift */; };
+		34E620022AF85012005FF86E /* ListItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E620012AF85012005FF86E /* ListItemViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,7 @@
 		34E61FFB2AE850F7005FF86E /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		34E61FFD2AE9A61C005FF86E /* NewItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewItemView.swift; sourceTree = "<group>"; };
 		34E61FFF2AE9A6D6005FF86E /* NewItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewItemViewModel.swift; sourceTree = "<group>"; };
+		34E620012AF85012005FF86E /* ListItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,6 +223,7 @@
 				3490921E2ADFA79000F22C3C /* MainViewModel.swift */,
 				34E61FFB2AE850F7005FF86E /* ProfileViewModel.swift */,
 				34E61FFF2AE9A6D6005FF86E /* NewItemViewModel.swift */,
+				34E620012AF85012005FF86E /* ListItemViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -377,6 +380,7 @@
 				3490921C2ADF780100F22C3C /* EncodableUtil.swift in Sources */,
 				345C28E62AD4FC080045B756 /* ListItem.swift in Sources */,
 				34E61FFE2AE9A61C005FF86E /* NewItemView.swift in Sources */,
+				34E620022AF85012005FF86E /* ListItemViewModel.swift in Sources */,
 				349092182ADF60DC00F22C3C /* HeaderView.swift in Sources */,
 				345C28E32AD4FBCD0045B756 /* ListItemView.swift in Sources */,
 				345C28EC2AD50AC90045B756 /* OurList.swift in Sources */,
