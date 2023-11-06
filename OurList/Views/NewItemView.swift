@@ -8,8 +8,15 @@
 import SwiftUI
 
 struct NewItemView: View {
-    @StateObject var viewModel = NewItemViewModel()
+    @StateObject var viewModel: NewItemViewModel
     @Binding var newItemPresented: Bool
+
+    init(listId: String, newItemPresented: Binding<Bool> = .constant(false)) {
+        self._viewModel = StateObject(
+            wrappedValue: NewItemViewModel(listId: listId)
+        )
+        self._newItemPresented = newItemPresented
+    }
 
     var body: some View {
         VStack {
@@ -47,7 +54,7 @@ struct NewItemView: View {
 }
 
 #Preview {
-    NewItemView(newItemPresented: Binding(get: {
+    NewItemView(listId:"bPxUqd9lOlHQ6soMAs56", newItemPresented: Binding(get: {
         return true
     }, set: { _ in
     }))

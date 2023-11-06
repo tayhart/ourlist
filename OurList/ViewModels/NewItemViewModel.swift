@@ -14,15 +14,14 @@ class NewItemViewModel: ObservableObject {
     @Published var dueDate = Date()
     @Published var showAlert = false
 
-    init() {}
+    var listId: String = ""
+
+    init(listId: String) {
+        self.listId = listId
+    }
 
     func save() {
         guard canSave else {
-            return
-        }
-
-        // Get current user id
-        guard let uid = Auth.auth().currentUser?.uid else {
             return
         }
 
@@ -33,14 +32,13 @@ class NewItemViewModel: ObservableObject {
             name: title,
             dueDate: dueDate.timeIntervalSince1970,
             createdDate: Date().timeIntervalSince1970,
-            notes: "",
             isDone: false)
 
         // Save Model
         let db = Firestore.firestore()
-        db.collection("users")
-            .document(uid)
-            .collection("todos")
+        db.collection("lists")
+            .document(listId)
+            .collection("listItems")
             .document(newId)
             .setData(newItem.asDictionary())
     }
