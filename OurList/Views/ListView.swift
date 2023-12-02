@@ -50,7 +50,7 @@ struct ListView: View {
             }
             .listStyle(.plain)
         }
-        .navigationTitle("List")
+        .navigationTitle(viewModel.listName)
         .toolbar {
             Button {
                 viewModel.showingNewItemView = true

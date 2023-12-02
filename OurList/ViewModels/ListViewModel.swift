@@ -41,29 +41,40 @@ class ListViewModel: ObservableObject {
         guard !listId.isEmpty else {
             return
         }
-    
+
+        // Get the list name
         db.collection("lists")
-            .document("\(listId)")
+            .document(listId)
+            .getDocument { snapshot, error in
+                guard let data = snapshot?.data(), error == nil else {
+                    return
+                }
+                
+                self.listName = data["name"] as? String ?? ""
+            }
+
+        // Setup listener for items in the DB
+        db.collection("lists")
+            .document(listId)
             .collection("listItems")
-            .getDocuments { snapshot, error  in
-                guard let snapshot, error == nil else {
+            .addSnapshotListener { snapshot, error in
+                guard let itemDocs = snapshot?.documents, error == nil else {
                     return
                 }
 
                 DispatchQueue.main.async {
-                    self.items = snapshot.documents.map {item in
+                    self.items = itemDocs.map {item in
                         ListItem(
                             id: item["id"] as? String ?? "",
                             name: item["name"] as? String ?? "",
                             dueDate: item["dueDate"] as? TimeInterval ?? Date().timeIntervalSince1970,
                             createdDate: item["createdDate"] as? TimeInterval ?? Date().timeIntervalSince1970,
-                            isDone: item["isDone"] as! Bool)
+                            isDone: item["isDone"] as! Bool,
+                            listId: self.listId)
                     }
                 }
 
             }
-
-
     }
 
     func addItem(_ item: ListItem) {
@@ -73,9 +84,9 @@ class ListViewModel: ObservableObject {
     func deleteItem(_ id: String) {
         let db = Firestore.firestore()
 
-        db.collection("users")
-            .document(userId)
-            .collection("todos")
+        db.collection("lists")
+            .document(listId)
+            .collection("listItems")
             .document(id)
             .delete()
     }
