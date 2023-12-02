@@ -41,17 +41,29 @@ class ListViewModel: ObservableObject {
         guard !listId.isEmpty else {
             return
         }
-    
+
+        // Get the list name
+        db.collection("lists")
+            .document("\(listId)")
+            .getDocument { snapshot, error in
+                guard let data = snapshot?.data(), error == nil else {
+                    return
+                }
+                
+                self.listName = data["name"] as? String ?? ""
+            }
+
+        // Setup listener for items in the DB
         db.collection("lists")
             .document("\(listId)")
             .collection("listItems")
-            .getDocuments { snapshot, error  in
-                guard let snapshot, error == nil else {
+            .addSnapshotListener { snapshot, error in
+                guard let itemDocs = snapshot?.documents, error == nil else {
                     return
                 }
 
                 DispatchQueue.main.async {
-                    self.items = snapshot.documents.map {item in
+                    self.items = itemDocs.map {item in
                         ListItem(
                             id: item["id"] as? String ?? "",
                             name: item["name"] as? String ?? "",
@@ -62,8 +74,6 @@ class ListViewModel: ObservableObject {
                 }
 
             }
-
-
     }
 
     func addItem(_ item: ListItem) {
