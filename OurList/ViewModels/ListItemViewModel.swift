@@ -10,7 +10,7 @@ import FirebaseAuth
 import FirebaseFirestore
 
 class ListItemViewModel: ObservableObject {
-    
+
     init() {}
 
     func toggleIsDone(item: ListItem) {
@@ -22,9 +22,9 @@ class ListItemViewModel: ObservableObject {
         }
 
         let db = Firestore.firestore()
-        db.collection("users")
-            .document(uid)
-            .collection("todos")
+        db.collection("lists")
+            .document(itemCopy.listId)
+            .collection("listItems")
             .document(itemCopy.id)
             .setData(itemCopy.asDictionary())
     }

@@ -44,7 +44,7 @@ class ListViewModel: ObservableObject {
 
         // Get the list name
         db.collection("lists")
-            .document("\(listId)")
+            .document(listId)
             .getDocument { snapshot, error in
                 guard let data = snapshot?.data(), error == nil else {
                     return
@@ -55,7 +55,7 @@ class ListViewModel: ObservableObject {
 
         // Setup listener for items in the DB
         db.collection("lists")
-            .document("\(listId)")
+            .document(listId)
             .collection("listItems")
             .addSnapshotListener { snapshot, error in
                 guard let itemDocs = snapshot?.documents, error == nil else {
@@ -69,7 +69,8 @@ class ListViewModel: ObservableObject {
                             name: item["name"] as? String ?? "",
                             dueDate: item["dueDate"] as? TimeInterval ?? Date().timeIntervalSince1970,
                             createdDate: item["createdDate"] as? TimeInterval ?? Date().timeIntervalSince1970,
-                            isDone: item["isDone"] as! Bool)
+                            isDone: item["isDone"] as! Bool,
+                            listId: self.listId)
                     }
                 }
 
@@ -83,9 +84,9 @@ class ListViewModel: ObservableObject {
     func deleteItem(_ id: String) {
         let db = Firestore.firestore()
 
-        db.collection("users")
-            .document(userId)
-            .collection("todos")
+        db.collection("lists")
+            .document(listId)
+            .collection("listItems")
             .document(id)
             .delete()
     }
