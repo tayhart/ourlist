@@ -32,8 +32,7 @@ class NewItemViewModel: ObservableObject {
             name: title,
             dueDate: dueDate.timeIntervalSince1970,
             createdDate: Date().timeIntervalSince1970,
-            isDone: false,
-            listId: listId)
+            isDone: false)
 
         // Save Model
         let db = Firestore.firestore()

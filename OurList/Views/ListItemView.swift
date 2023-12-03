@@ -8,9 +8,16 @@
 import SwiftUI
 
 struct ListItemView: View {
-    @StateObject var viewModel = ListItemViewModel()
-
+    @StateObject var viewModel: ListItemViewModel
     var listItem: ListItem
+
+    init(listId: String, listItem: ListItem) {
+        self.listItem = listItem
+        self._viewModel = StateObject(
+            wrappedValue: ListItemViewModel(listId: listId)
+        )
+    }
+
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
@@ -34,11 +41,12 @@ struct ListItemView: View {
 }
 
 #Preview {
-    ListItemView(listItem: ListItem(
-        id: "123",
-        name: "Test",
-        dueDate: Date().timeIntervalSince1970,
-        createdDate: Date().timeIntervalSince1970,
-        isDone: true,
-        listId: ""))
+    ListItemView(
+        listId: "",
+        listItem: ListItem(
+            id: "123",
+            name: "Test",
+            dueDate: Date().timeIntervalSince1970,
+            createdDate: Date().timeIntervalSince1970,
+            isDone: true))
 }

@@ -37,7 +37,9 @@ struct ListView: View {
     func currentListView() -> some View {
         VStack {
             List(viewModel.items) { item in
-                ListItemView(listItem: item)
+                ListItemView(
+                    listId: viewModel.listId,
+                    listItem: item)
                     .swipeActions {
                         Button {
                             //Delete

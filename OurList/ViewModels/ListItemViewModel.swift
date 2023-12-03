@@ -11,19 +11,23 @@ import FirebaseFirestore
 
 class ListItemViewModel: ObservableObject {
 
-    init() {}
+    let listId: String
+
+    init(listId: String) {
+        self.listId = listId
+    }
 
     func toggleIsDone(item: ListItem) {
         var itemCopy = item
         itemCopy.setDone(!item.isDone)
 
-        guard let uid = Auth.auth().currentUser?.uid else {
+        guard let _ = Auth.auth().currentUser?.uid else {
             return
         }
 
         let db = Firestore.firestore()
         db.collection("lists")
-            .document(itemCopy.listId)
+            .document(listId)
             .collection("listItems")
             .document(itemCopy.id)
             .setData(itemCopy.asDictionary())
