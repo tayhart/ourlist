@@ -24,14 +24,20 @@ struct ListsOverviewView: View {
     }
 
     var body: some View {
-        ScrollView {
-            LazyVGrid(columns: columns, spacing: 16) {
-                ForEach(viewModel.lists) { card in
-                    ListCardView(title: card.listTitle)
-                        .frame(height: height)
+        NavigationStack {
+            ScrollView {
+                LazyVGrid(columns: columns, spacing: 16) {
+                    ForEach(viewModel.lists) { card in
+
+                        NavigationLink(destination: ListView(listId: card.id)) {
+                            ListCardView(title: card.listTitle)
+                                .frame(height: height)
+                        }
+                    }
                 }
+                .padding()
+                .navigationTitle("Your Lists")
             }
-            .padding()
         }
     }
 }

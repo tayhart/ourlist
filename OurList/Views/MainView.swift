@@ -18,11 +18,6 @@ struct MainView: View {
                         Label("Lists", systemImage: "rectangle.grid.2x2")
                     }
 
-                ListView(userId: viewModel.currentUserId)
-                    .tabItem {
-                        Label("Home", systemImage: "house")
-                    }
-
                 ProfileView()
                     .tabItem {
                         Label("Profile", systemImage: "person.circle")

@@ -19,10 +19,14 @@ class  ListsOverviewViewModel: ObservableObject {
 
     init(userId: String) {
         self.userId = userId
+        reloadLists()
+    }
 
+    func reloadLists() {
         db.collection("users")
             .document(userId)
             .getDocument { snapshot, error in
+                // TODO: need to change this to a snapshot listener probably
                 guard let data = snapshot?.data(),
                       error == nil,
                       let listIds = data["listIds"] as? [String: String]
@@ -32,8 +36,8 @@ class  ListsOverviewViewModel: ObservableObject {
 
                 self.lists = listIds.compactMap { listIdData in
                     return ListCardModel(
-                        id: listIdData.value,
-                        listTitle: listIdData.key)
+                        id: listIdData.key,
+                        listTitle: listIdData.value)
                 }
             }
     }
