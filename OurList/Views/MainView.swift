@@ -13,6 +13,11 @@ struct MainView: View {
     var body: some View {
         if viewModel.isSignedIn, !viewModel.currentUserId.isEmpty {
             TabView {
+                ListsOverviewView(userId: viewModel.currentUserId)
+                    .tabItem {
+                        Label("Lists", systemImage: "rectangle.grid.2x2")
+                    }
+
                 ListView(userId: viewModel.currentUserId)
                     .tabItem {
                         Label("Home", systemImage: "house")
