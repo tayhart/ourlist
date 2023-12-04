@@ -11,19 +11,34 @@ struct ListCardView: View {
     let title: String
 
     var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 12)
-                .foregroundColor(.random)
-            VStack {
-                Text(title)
-                    .font(.title)
+        // todo: make this a configurable style and apply it instead of
+        // doing this
+        if title == "+" {
+            ZStack {
+                RoundedRectangle(cornerRadius: 12)
+                    .foregroundColor(.blue)
+                VStack {
+                    Text(title)
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .foregroundStyle(.white)
+                }
+            }
+        } else {
+            ZStack {
+                RoundedRectangle(cornerRadius: 12)
+                    .foregroundColor(.random)
+                VStack {
+                    Text(title)
+                        .font(.title)
+                }
             }
         }
     }
 }
 
 #Preview {
-    ListCardView(title: "Chores")
+    ListCardView(title: "+")
 }
 
 extension Color {

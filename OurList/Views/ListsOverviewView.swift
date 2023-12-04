@@ -34,6 +34,12 @@ struct ListsOverviewView: View {
                                 .frame(height: height)
                         }
                     }
+
+
+                    NavigationLink(destination: Text("Add new list")) {
+                        ListCardView(title: "+")
+                            .frame(height: height)
+                    }
                 }
                 .padding()
                 .navigationTitle("Your Lists")
