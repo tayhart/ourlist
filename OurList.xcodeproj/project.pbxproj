@@ -39,6 +39,11 @@
 		3494900A2B1CE976005E53C8 /* ListCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349490092B1CE976005E53C8 /* ListCardView.swift */; };
 		3494900C2B1CED24005E53C8 /* ListsOverviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3494900B2B1CED24005E53C8 /* ListsOverviewViewModel.swift */; };
 		3494900E2B1D0085005E53C8 /* StringUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3494900D2B1D0085005E53C8 /* StringUtil.swift */; };
+		349490102B1E34D8005E53C8 /* NewListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3494900F2B1E34D8005E53C8 /* NewListView.swift */; };
+		349490122B1E36E5005E53C8 /* NewListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349490112B1E36E5005E53C8 /* NewListViewModel.swift */; };
+		349490142B1E381F005E53C8 /* UserList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349490132B1E381F005E53C8 /* UserList.swift */; };
+		349490162B1E424F005E53C8 /* UIColorUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349490152B1E424F005E53C8 /* UIColorUtil.swift */; };
+		349490182B238B89005E53C8 /* ColorUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349490172B238B89005E53C8 /* ColorUtil.swift */; };
 		34E61FFC2AE850F7005FF86E /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E61FFB2AE850F7005FF86E /* ProfileViewModel.swift */; };
 		34E61FFE2AE9A61C005FF86E /* NewItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E61FFD2AE9A61C005FF86E /* NewItemView.swift */; };
 		34E620002AE9A6D6005FF86E /* NewItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E61FFF2AE9A6D6005FF86E /* NewItemViewModel.swift */; };
@@ -95,6 +100,11 @@
 		349490092B1CE976005E53C8 /* ListCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCardView.swift; sourceTree = "<group>"; };
 		3494900B2B1CED24005E53C8 /* ListsOverviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListsOverviewViewModel.swift; sourceTree = "<group>"; };
 		3494900D2B1D0085005E53C8 /* StringUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringUtil.swift; sourceTree = "<group>"; };
+		3494900F2B1E34D8005E53C8 /* NewListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewListView.swift; sourceTree = "<group>"; };
+		349490112B1E36E5005E53C8 /* NewListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewListViewModel.swift; sourceTree = "<group>"; };
+		349490132B1E381F005E53C8 /* UserList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserList.swift; sourceTree = "<group>"; };
+		349490152B1E424F005E53C8 /* UIColorUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorUtil.swift; sourceTree = "<group>"; };
+		349490172B238B89005E53C8 /* ColorUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorUtil.swift; sourceTree = "<group>"; };
 		34E61FFB2AE850F7005FF86E /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		34E61FFD2AE9A61C005FF86E /* NewItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewItemView.swift; sourceTree = "<group>"; };
 		34E61FFF2AE9A6D6005FF86E /* NewItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewItemViewModel.swift; sourceTree = "<group>"; };
@@ -204,6 +214,7 @@
 				34E61FFD2AE9A61C005FF86E /* NewItemView.swift */,
 				349490052B1CE6E9005E53C8 /* ListsOverviewView.swift */,
 				349490092B1CE976005E53C8 /* ListCardView.swift */,
+				3494900F2B1E34D8005E53C8 /* NewListView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -214,6 +225,7 @@
 				345C28E52AD4FC080045B756 /* ListItem.swift */,
 				345C28EB2AD50AC90045B756 /* OurList.swift */,
 				349092102ADDCC8900F22C3C /* User.swift */,
+				349490132B1E381F005E53C8 /* UserList.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -238,6 +250,7 @@
 				34E620012AF85012005FF86E /* ListItemViewModel.swift */,
 				349490072B1CE759005E53C8 /* ListCardModel.swift */,
 				3494900B2B1CED24005E53C8 /* ListsOverviewViewModel.swift */,
+				349490112B1E36E5005E53C8 /* NewListViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -247,6 +260,8 @@
 			children = (
 				3490921B2ADF780100F22C3C /* EncodableUtil.swift */,
 				3494900D2B1D0085005E53C8 /* StringUtil.swift */,
+				349490152B1E424F005E53C8 /* UIColorUtil.swift */,
+				349490172B238B89005E53C8 /* ColorUtil.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -397,20 +412,25 @@
 				34E61FFE2AE9A61C005FF86E /* NewItemView.swift in Sources */,
 				34E620022AF85012005FF86E /* ListItemViewModel.swift in Sources */,
 				349092182ADF60DC00F22C3C /* HeaderView.swift in Sources */,
+				349490182B238B89005E53C8 /* ColorUtil.swift in Sources */,
 				349490062B1CE6E9005E53C8 /* ListsOverviewView.swift in Sources */,
 				345C28E32AD4FBCD0045B756 /* ListItemView.swift in Sources */,
 				345C28EC2AD50AC90045B756 /* OurList.swift in Sources */,
 				34E620002AE9A6D6005FF86E /* NewItemViewModel.swift in Sources */,
+				349490122B1E36E5005E53C8 /* NewListViewModel.swift in Sources */,
 				3494900C2B1CED24005E53C8 /* ListsOverviewViewModel.swift in Sources */,
 				3490921A2ADF6D1400F22C3C /* OLButton.swift in Sources */,
+				349490102B1E34D8005E53C8 /* NewListView.swift in Sources */,
 				3490920F2ADDCC6100F22C3C /* RegistrationView.swift in Sources */,
 				345C28E82AD4FE2F0045B756 /* ListView.swift in Sources */,
 				349092132ADF1C1F00F22C3C /* LoginViewModel.swift in Sources */,
 				3494900A2B1CE976005E53C8 /* ListCardView.swift in Sources */,
+				349490162B1E424F005E53C8 /* UIColorUtil.swift in Sources */,
 				345C28BA2AD4F1E10045B756 /* MainView.swift in Sources */,
 				349092002ADDC37D00F22C3C /* ListViewModel.swift in Sources */,
 				345C28B82AD4F1E10045B756 /* OurListApp.swift in Sources */,
 				349092162ADF1C3100F22C3C /* RegistrationViewModel.swift in Sources */,
+				349490142B1E381F005E53C8 /* UserList.swift in Sources */,
 				349092022ADDC79600F22C3C /* LoginView.swift in Sources */,
 				3490920D2ADDCC4F00F22C3C /* ProfileView.swift in Sources */,
 				349490082B1CE759005E53C8 /* ListCardModel.swift in Sources */,

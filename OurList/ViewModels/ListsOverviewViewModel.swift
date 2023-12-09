@@ -10,12 +10,12 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 
 class  ListsOverviewViewModel: ObservableObject {
-    private let userId: String
+    let userId: String
     @Published var userName: String = ""
     @Published var lists: [ListCardModel] = []
 
     let db = Firestore.firestore()
-    var listIds: [String] = []
+    var listIds: [String: String] = [:]
 
     init(userId: String) {
         self.userId = userId
@@ -25,19 +25,22 @@ class  ListsOverviewViewModel: ObservableObject {
     func reloadLists() {
         db.collection("users")
             .document(userId)
-            .getDocument { snapshot, error in
-                // TODO: need to change this to a snapshot listener probably
+            .addSnapshotListener { snapshot, error in
                 guard let data = snapshot?.data(),
                       error == nil,
-                      let listIds = data["listIds"] as? [String: String]
+                      let dataLists = data["listIds"] as? [String: String]
                 else {
                     return
                 }
 
-                self.lists = listIds.compactMap { listIdData in
-                    return ListCardModel(
-                        id: listIdData.key,
-                        listTitle: listIdData.value)
+                self.listIds = dataLists
+
+                DispatchQueue.main.async {
+                    self.lists = self.listIds.compactMap { listIdData in
+                        return ListCardModel(
+                            id: listIdData.key,
+                            listTitle: listIdData.value)
+                    }
                 }
             }
     }
