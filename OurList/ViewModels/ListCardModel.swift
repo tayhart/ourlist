@@ -11,4 +11,5 @@ import FirebaseFirestore
 struct ListCardModel: Identifiable {
     let id: String
     let listTitle: String
+    let color: String
 }

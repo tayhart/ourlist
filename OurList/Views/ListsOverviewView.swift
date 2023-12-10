@@ -28,7 +28,7 @@ struct ListsOverviewView: View {
         NavigationStack {
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 16) {
-                    ForEach(viewModel.lists) { card in
+                    ForEach(viewModel.listCards) { card in
                         NavigationLink(destination: ListView(listId: card.id)) {
                             ListCardView(title: card.listTitle)
                                 .frame(height: height)

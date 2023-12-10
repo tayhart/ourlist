@@ -60,7 +60,6 @@ class ListViewModel: ObservableObject {
                             isDone: item["isDone"] as! Bool)
                     }
                 }
-
             }
     }
 
