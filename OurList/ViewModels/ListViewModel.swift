@@ -12,29 +12,17 @@ import FirebaseFirestoreSwift
 class ListViewModel: ObservableObject {
     @Published var listName: String = ""
     @Published var showingNewItemView: Bool = false
-    @Published var listId: String = ""
+    @Published var listId: String
     @Published var items = [ListItem]()
 
-    private let userId: String
     let db = Firestore.firestore()
 
     /// Delete todolist item
     /// - Parameter userId: user id of the logged in user
     /// - Parameter listId: list id of the list currently being shown
-    init(userId: String) {
-        self.userId = userId
-
-        // Get the initial list id for the current user
-        db.collection("users")
-            .document("\(self.userId)")
-            .getDocument { snapshot, error in
-                guard let data = snapshot?.data(),
-                      error == nil else {
-                    return
-                }
-                self.listId = (data["listIds"] as? [String: String])?.first?.value.trimmingCharacters(in: .whitespaces) ?? ""
-                self.fetchListData()
-            }
+    init(listId: String) {
+        self.listId = listId
+        fetchListData()
     }
 
     func fetchListData() {
@@ -72,7 +60,6 @@ class ListViewModel: ObservableObject {
                             isDone: item["isDone"] as! Bool)
                     }
                 }
-
             }
     }
 

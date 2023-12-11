@@ -12,13 +12,9 @@ import FirebaseFirestore
 struct ListView: View {
     @StateObject var viewModel: ListViewModel
 
-    private let userId: String
-
-    init(userId: String) {
-        self.userId = userId
-
+    init(listId: String) {
         self._viewModel = StateObject(
-            wrappedValue: ListViewModel(userId: userId)
+            wrappedValue: ListViewModel(listId: listId)
         )
     }
 
@@ -67,5 +63,5 @@ struct ListView: View {
 }
 
 #Preview {
-    ListView(userId: "2iZsrS0iVsQLWidEX6W8QNoexp13")
+    ListView(listId: "bPxUqd9lOlHQ6soMAs56")
 }

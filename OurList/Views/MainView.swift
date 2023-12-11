@@ -13,9 +13,9 @@ struct MainView: View {
     var body: some View {
         if viewModel.isSignedIn, !viewModel.currentUserId.isEmpty {
             TabView {
-                ListView(userId: viewModel.currentUserId)
+                ListsOverviewView()
                     .tabItem {
-                        Label("Home", systemImage: "house")
+                        Label("Lists", systemImage: "rectangle.grid.2x2")
                     }
 
                 ProfileView()

@@ -20,19 +20,21 @@ class ProfileViewModel: ObservableObject {
         }
 
         let db = Firestore.firestore()
-        db.collection("users").document(userId).getDocument { [weak self] snapshot, error in
-            guard let data = snapshot?.data(), error == nil, let self else {
-                return
-            }
+        db.collection("users")
+            .document(userId)
+            .getDocument { [weak self] snapshot, error in
+                guard let data = snapshot?.data(), error == nil, let self else {
+                    return
+                }
 
-            DispatchQueue.main.async {
-                self.user = User(
-                    id: data["id"] as? String ?? "",
-                    name: data["name"] as? String ?? "",
-                    email: data["email"] as? String ?? "",
-                    joined: data["joined"] as? TimeInterval ?? 0)
+                DispatchQueue.main.async {
+                    self.user = User(
+                        id: data["id"] as? String ?? "",
+                        name: data["name"] as? String ?? "",
+                        email: data["email"] as? String ?? "",
+                        joined: data["joined"] as? TimeInterval ?? 0)
+                }
             }
-        }
     }
 
     func logOut() {
