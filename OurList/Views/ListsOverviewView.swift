@@ -25,7 +25,7 @@ struct ListsOverviewView: View {
                     .font(.title)
                     .fontWeight(.semibold)
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.init(top: 16, leading: 16, bottom: 0, trailing: 16))
+                    .padding(.init(top: 16, leading: 8, bottom: 0, trailing: 8))
 
                 LazyVGrid(columns: columns, spacing: 16) {
                     ForEach(viewModel.listCards) { card in
@@ -33,7 +33,9 @@ struct ListsOverviewView: View {
                             let color = Color(uiColor: UIColor(hex: card.color) ?? .cyan)
                             ListCardView(title: card.listTitle, color: color)
                                 .frame(height: height)
+
                         }
+                        .shadow(radius: 3.0)
                     }
 
                     ListCardView(title: "+")
@@ -42,7 +44,7 @@ struct ListsOverviewView: View {
                             showAddListModal.toggle()
                         }
                 }
-                .padding(.init(top: 0, leading: 16, bottom: 16, trailing: 16))
+                .padding(.init(top: 0, leading: 8, bottom: 16, trailing: 8))
             }
         }
         .sheet(isPresented: $showAddListModal) {
