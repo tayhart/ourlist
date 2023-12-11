@@ -37,6 +37,8 @@ struct ListCardView: View {
                 VStack {
                     Text(title)
                         .font(.title)
+                        .foregroundStyle(.white)
+                        .padding()
                 }
             }
         }

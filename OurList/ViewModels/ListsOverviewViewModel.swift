@@ -36,6 +36,7 @@ class  ListsOverviewViewModel: ObservableObject {
                 }
 
                 self.listIds = dataLists
+                self.userName = data["name"] as? String ?? ""
                 self.createListModels() { cardsStorage in
                     DispatchQueue.main.async {
                         self.listCards = cardsStorage
