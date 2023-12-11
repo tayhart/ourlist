@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ListsOverviewView: View {
-    @StateObject var viewModel: ListsOverviewViewModel
+    @StateObject var viewModel = ListsOverviewViewModel()
     @State private var showAddListModal = false
 
     var columns: [GridItem] = [
@@ -18,19 +18,14 @@ struct ListsOverviewView: View {
 
     let height: CGFloat = 150
 
-    init(userId: String) {
-        self._viewModel = StateObject(
-            wrappedValue: ListsOverviewViewModel(userId: userId)
-        )
-    }
-
     var body: some View {
         NavigationStack {
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 16) {
                     ForEach(viewModel.listCards) { card in
                         NavigationLink(destination: ListView(listId: card.id)) {
-                            ListCardView(title: card.listTitle)
+                            let color = Color(uiColor: UIColor(hex: card.color) ?? .cyan)
+                            ListCardView(title: card.listTitle, color: color)
                                 .frame(height: height)
                         }
                     }
@@ -55,5 +50,5 @@ struct ListsOverviewView: View {
 }
 
 #Preview {
-    ListsOverviewView(userId: .testUserId)
+    ListsOverviewView()
 }

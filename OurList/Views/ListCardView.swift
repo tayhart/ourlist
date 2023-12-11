@@ -9,6 +9,12 @@ import SwiftUI
 
 struct ListCardView: View {
     let title: String
+    let color: Color
+
+    init(title: String, color: Color = .random) {
+        self.title = title
+        self.color = color
+    }
 
     var body: some View {
         // todo: make this a configurable style and apply it instead of
@@ -27,7 +33,7 @@ struct ListCardView: View {
         } else {
             ZStack {
                 RoundedRectangle(cornerRadius: 12)
-                    .foregroundColor(.random)
+                    .foregroundColor(color)
                 VStack {
                     Text(title)
                         .font(.title)
@@ -38,7 +44,7 @@ struct ListCardView: View {
 }
 
 #Preview {
-    ListCardView(title: "+")
+    ListCardView(title: "+", color: .cyan)
 }
 
 extension Color {

@@ -8,6 +8,7 @@
 import Foundation
 import FirebaseFirestore
 import FirebaseFirestoreSwift
+import FirebaseAuth
 
 class  ListsOverviewViewModel: ObservableObject {
     let userId: String
@@ -17,12 +18,8 @@ class  ListsOverviewViewModel: ObservableObject {
     let db = Firestore.firestore()
     var listIds: [String: String] = [:]
 
-    init(userId: String) {
-        // TODO: Don't need to keep passing the userid around I guess
-//        guard let userId = Auth.auth().currentUser?.uid else {
-//            return
-//        }
-        self.userId = userId
+    init() {
+        self.userId = Auth.auth().currentUser?.uid ?? .testUserId
         loadUsersLists()
     }
 

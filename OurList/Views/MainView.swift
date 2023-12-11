@@ -13,7 +13,7 @@ struct MainView: View {
     var body: some View {
         if viewModel.isSignedIn, !viewModel.currentUserId.isEmpty {
             TabView {
-                ListsOverviewView(userId: viewModel.currentUserId)
+                ListsOverviewView()
                     .tabItem {
                         Label("Lists", systemImage: "rectangle.grid.2x2")
                     }
