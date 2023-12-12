@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ListCardView: View {
+    @Environment(\.self) var environment
     let title: String
     let color: Color
 
@@ -31,16 +32,39 @@ struct ListCardView: View {
                 }
             }
         } else {
-            ZStack {
+            ZStack(alignment: .top) {
                 RoundedRectangle(cornerRadius: 12)
-                    .foregroundColor(color)
-                VStack {
+                    .fill(color.gradient)
+                HStack {
                     Text(title)
                         .font(.title)
-                        .foregroundStyle(.white)
+                        .foregroundStyle(getTextColor())
                         .padding()
+                    Spacer()
+                    Button {
+                        // more menu
+                    } label: {
+                        Label(
+                            "Quick options",
+                            systemImage: "ellipsis")
+                        .labelStyle(.iconOnly)
+                        .foregroundStyle(getTextColor())
+                        .padding()
+                    }
                 }
             }
+        }
+    }
+
+    func getTextColor() -> Color {
+        // using an RGB -> Luma Conversion formula approximation for perf
+        // Y = 0.33 R + 0.5 G + 0.16 B
+        let (r, g, b, _) = UIColor(color).rgbComponents
+        let lumaValue = 0.33 * r + 0.5 * g + 0.16 * b
+        if lumaValue > 0.5 {
+            return .black
+        } else {
+            return .white
         }
     }
 }

@@ -12,7 +12,6 @@ struct ListsOverviewView: View {
     @State private var showAddListModal = false
 
     var columns: [GridItem] = [
-            GridItem(.flexible(minimum: 140)),
             GridItem(.flexible())
         ]
 
