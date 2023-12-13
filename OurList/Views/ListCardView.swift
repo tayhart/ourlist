@@ -41,16 +41,21 @@ struct ListCardView: View {
                         .foregroundStyle(getTextColor())
                         .padding()
                     Spacer()
-                    Button {
-                        // more menu
+                    Menu {
+                        Button("Edit list") {}
+                        Button("Delete list") {}
                     } label: {
-                        Label(
-                            "Quick options",
-                            systemImage: "ellipsis")
-                        .labelStyle(.iconOnly)
-                        .foregroundStyle(getTextColor())
-                        .padding()
+                        Circle()
+                            .fill(.gray.opacity(0.15))
+                            .frame(width: 30, height: 30)
+                            .overlay {
+                                Image(systemName: "ellipsis")
+                                    .font(.system(size: 13.0, weight: .semibold))
+                                    .foregroundColor(getTextColor())
+                                    .padding()
+                            }
                     }
+                    .padding()
                 }
             }
         }
