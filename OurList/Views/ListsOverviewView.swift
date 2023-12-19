@@ -28,8 +28,8 @@ struct ListsOverviewView: View {
 
                 LazyVGrid(columns: columns, spacing: 16) {
                     ForEach(viewModel.listCards) { card in
-                        NavigationLink(destination: ListView(listId: card.id)) {
-                            let color = Color(uiColor: UIColor(hex: card.color) ?? .cyan)
+                        NavigationLink(destination: ListView(listId: card.id, color: card.color)) {
+                            let color = Color(hex: card.color)
                             ListCardView(title: card.listTitle, color: color)
                                 .frame(height: height)
 

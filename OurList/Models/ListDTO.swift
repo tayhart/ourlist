@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct UserList: Hashable, Codable, Identifiable {
+struct ListDTO: Hashable, Codable, Identifiable {
     let id: String
     var name: String
     var color: String

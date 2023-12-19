@@ -19,11 +19,11 @@ class  ListsOverviewViewModel: ObservableObject {
     var listIds: [String: String] = [:]
 
     init() {
-        self.userId = Auth.auth().currentUser?.uid ?? .testUserId
-        loadUsersLists()
+        self.userId = User.shared.userId ?? .testUserId
+        refreshUserLists()
     }
 
-    private func loadUsersLists() {
+    func refreshUserLists() {
         db.collection("users")
             .document(userId)
             .addSnapshotListener { snapshot, error in

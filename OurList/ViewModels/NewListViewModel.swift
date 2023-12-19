@@ -37,7 +37,7 @@ class NewListViewModel: ObservableObject {
         // Create model
         let hexColor: String = color.toHex() ?? "#FFFFFF"
         let listId = UUID().uuidString
-        let newList = UserList(
+        let newList = ListDTO(
             id: listId,
             name: title,
             color: hexColor,

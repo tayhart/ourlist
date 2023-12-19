@@ -9,8 +9,9 @@ import Foundation
 import FirebaseAuth
 import FirebaseFirestore
 
+//TODO: Update to use the user singleton
 class ProfileViewModel: ObservableObject {
-    @Published var user: User? = nil
+    @Published var user: UserDTO? = nil
 
     init() {}
 
@@ -28,7 +29,7 @@ class ProfileViewModel: ObservableObject {
                 }
 
                 DispatchQueue.main.async {
-                    self.user = User(
+                    self.user = UserDTO(
                         id: data["id"] as? String ?? "",
                         name: data["name"] as? String ?? "",
                         email: data["email"] as? String ?? "",

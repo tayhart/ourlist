@@ -8,11 +8,13 @@
 import FirebaseFirestore
 import Foundation
 import FirebaseFirestoreSwift
+import SwiftUI
 
 class ListViewModel: ObservableObject {
     @Published var listName: String = ""
     @Published var showingNewItemView: Bool = false
     @Published var listId: String
+    var colorHex: String
     @Published var items = [ListItem]()
 
     let db = Firestore.firestore()
@@ -20,8 +22,9 @@ class ListViewModel: ObservableObject {
     /// Delete todolist item
     /// - Parameter userId: user id of the logged in user
     /// - Parameter listId: list id of the list currently being shown
-    init(listId: String) {
+    init(listId: String, color: String) {
         self.listId = listId
+        self.colorHex = color
         fetchListData()
     }
 
@@ -33,8 +36,11 @@ class ListViewModel: ObservableObject {
         // Get the list name
         db.collection("lists")
             .document(listId)
-            .getDocument { snapshot, error in
-                guard let data = snapshot?.data(), error == nil else {
+            .addSnapshotListener { [weak self] snapshot, error in
+                guard let self,
+                      let data = snapshot?.data(),
+                      error == nil
+                else {
                     return
                 }
                 

@@ -33,7 +33,7 @@ class RegistrationViewModel: ObservableObject {
     }
 
     private func insertUserRecord(id: String) {
-        let newUser = User(
+        let newUser = UserDTO(
             id: id,
             name: name,
             email: email,

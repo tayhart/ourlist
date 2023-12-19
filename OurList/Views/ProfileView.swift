@@ -27,7 +27,7 @@ struct ProfileView: View {
     }
 
     @ViewBuilder
-    func profile(user: User) -> some View {
+    func profile(user: UserDTO) -> some View {
         // Avatar
         Image(systemName: "person.circle")
             .resizable()

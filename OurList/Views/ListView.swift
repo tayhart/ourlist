@@ -10,11 +10,13 @@ import FirebaseFirestoreSwift
 import FirebaseFirestore
 
 struct ListView: View {
+    @Environment(\.dismiss) var dismiss
     @StateObject var viewModel: ListViewModel
+    @State private var showEditListModal = false
 
-    init(listId: String) {
+    init(listId: String, color: String) {
         self._viewModel = StateObject(
-            wrappedValue: ListViewModel(listId: listId)
+            wrappedValue: ListViewModel(listId: listId, color: color)
         )
     }
 
@@ -26,6 +28,29 @@ struct ListView: View {
             } else {
                 currentListView()
             }
+        }
+        .navigationTitle($viewModel.listName)
+        .navigationBarTitleDisplayMode(.large)
+        .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button(action: {
+                    dismiss()
+                }) {
+                    Label("Back", systemImage: "chevron.backward")
+                        .foregroundColor(.black)
+                }
+            }
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    showEditListModal.toggle()
+                } label: {
+                    Label("Edit list", systemImage: "slider.horizontal.3")
+                }
+            }
+        }
+        .sheet(isPresented: $showEditListModal) {
+            EditListView(listModel: viewModel, editListPresented: $showEditListModal)
         }
     }
 
@@ -48,7 +73,6 @@ struct ListView: View {
             }
             .listStyle(.plain)
         }
-        .navigationTitle(viewModel.listName)
         .toolbar {
             Button {
                 viewModel.showingNewItemView = true
@@ -63,5 +87,5 @@ struct ListView: View {
 }
 
 #Preview {
-    ListView(listId: "bPxUqd9lOlHQ6soMAs56")
+    ListView(listId: "942DC81F-29B2-4AB8-B7AC-D8CCDCBAE307", color: "")
 }
