@@ -11,7 +11,7 @@ struct MainView: View {
     @StateObject var viewModel = MainViewModel()
 
     var body: some View {
-        if viewModel.isSignedIn, !viewModel.currentUserId.isEmpty {
+        if viewModel.isSignedIn, viewModel.userIsValid() {
             TabView {
                 ListsOverviewView()
                     .tabItem {

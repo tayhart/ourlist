@@ -26,8 +26,9 @@ class User {
     private(set) var listIds: [String: String]?
 
     /// Should rarely be called
-    func getCurrentUser() {
+    func getCurrentUser() -> String? {
         userId = Auth.auth().currentUser?.uid
+        return userId
     }
 
     private func refreshUserData() {

@@ -10,9 +10,11 @@ import SwiftUI
 struct EditListView: View {
     @StateObject var viewModel: EditListViewModel
     @Binding  var editListPresented: Bool
+    var onDelete: () -> Void
 
     init(
         listModel: ListViewModel,
+        onDeletion: (@escaping () -> Void),
         editListPresented: Binding<Bool> = .constant(false)
     ) {
         self._viewModel = StateObject(wrappedValue: EditListViewModel(
@@ -20,6 +22,7 @@ struct EditListView: View {
             originalTitle: listModel.listName,
             originalColorHex: listModel.colorHex))
         self._editListPresented = editListPresented
+        self.onDelete = onDeletion
     }
 
     var body: some View {
@@ -36,7 +39,7 @@ struct EditListView: View {
 
                 ColorPicker("Color", selection: $viewModel.color, supportsOpacity: false)
 
-                OLButton(title: "Save", background: .pink) {
+                OLButton(title: "Save", background: .green) {
                     if viewModel.canSave {
                         viewModel.save()
                         editListPresented = false
@@ -44,11 +47,16 @@ struct EditListView: View {
                         // show alert
                     }
                 }
+
+                OLButton(title: "Delete this list", background: .red) {
+                    // TODO: prompt if they are sure
+                    onDelete()
+                }
             }
         }
     }
 }
 
 #Preview {
-    EditListView(listModel: ListViewModel(listId: "", color: ""))
+    EditListView(listModel: ListViewModel(listId: "", color: ""), onDeletion: {})
 }

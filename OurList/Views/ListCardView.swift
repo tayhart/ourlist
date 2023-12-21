@@ -32,32 +32,23 @@ struct ListCardView: View {
                 }
             }
         } else {
-            ZStack(alignment: .top) {
-                RoundedRectangle(cornerRadius: 12)
-                    .fill(color.gradient)
+            VStack(alignment: .leading) {
                 HStack {
                     Text(title)
                         .font(.title)
                         .foregroundStyle(getTextColor())
                         .padding()
                     Spacer()
-                    Menu {
-                        Button("Edit list") {}
-                        Button("Delete list") {}
-                    } label: {
-                        Circle()
-                            .fill(.gray.opacity(0.15))
-                            .frame(width: 30, height: 30)
-                            .overlay {
-                                Image(systemName: "ellipsis")
-                                    .font(.system(size: 13.0, weight: .semibold))
-                                    .foregroundColor(getTextColor())
-                                    .padding()
-                            }
-                    }
-                    .padding()
                 }
             }
+            .frame(height: 100)
+            .background(color)
+            .overlay(
+                RoundedRectangle(cornerRadius: 12)
+                    .stroke(.black, lineWidth: 5)
+            )
+            .cornerRadius(12)
+
         }
     }
 

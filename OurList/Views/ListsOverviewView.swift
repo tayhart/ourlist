@@ -15,8 +15,6 @@ struct ListsOverviewView: View {
             GridItem(.flexible())
         ]
 
-    let height: CGFloat = 150
-
     var body: some View {
         NavigationStack {
             ScrollView {
@@ -29,16 +27,12 @@ struct ListsOverviewView: View {
                 LazyVGrid(columns: columns, spacing: 16) {
                     ForEach(viewModel.listCards) { card in
                         NavigationLink(destination: ListView(listId: card.id, color: card.color)) {
-                            let color = Color(hex: card.color)
-                            ListCardView(title: card.listTitle, color: color)
-                                .frame(height: height)
-
+                            ListCardView(title: card.listTitle, color: Color(hex: card.color))
                         }
-                        .shadow(radius: 3.0)
+                        .shadow(radius: 5.0)
                     }
 
                     ListCardView(title: "+")
-                        .frame(height: height)
                         .onTapGesture {
                             showAddListModal.toggle()
                         }

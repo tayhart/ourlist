@@ -21,6 +21,14 @@ class MainViewModel: ObservableObject {
     }
 
     public var isSignedIn: Bool {
-        return Auth.auth().currentUser != nil
+        return User.shared.getCurrentUser() != nil
+    }
+
+    func userIsValid() -> Bool {
+        guard let id = User.shared.userId else {
+            return false
+        }
+
+        return !id.isEmpty
     }
 }

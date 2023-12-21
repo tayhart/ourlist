@@ -73,6 +73,27 @@ class ListViewModel: ObservableObject {
         
     }
 
+    // TODO: add retry functionality
+    // also add a completion closure so that we can tell if the operation succeeded or
+    // not
+    func deleteList() {
+        guard let uid = User.shared.getCurrentUser(),
+              var userListIds = User.shared.listIds else {
+            return
+        }
+
+        let db = Firestore.firestore()
+        db.collection("lists")
+            .document(listId)
+            .delete()
+
+        userListIds.removeValue(forKey: listId)
+
+        db.collection("users")
+            .document(uid)
+            .updateData(["listIds": userListIds])
+    }
+
     func deleteItem(_ id: String) {
         let db = Firestore.firestore()
 
