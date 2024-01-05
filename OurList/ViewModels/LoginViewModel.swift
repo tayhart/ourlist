@@ -21,7 +21,15 @@ class LoginViewModel: ObservableObject {
         }
 
         // Try log in
-        Auth.auth().signIn(withEmail: email, password: password)
+        Auth.auth().signIn(withEmail: email, password: password) { [weak self] dataResult, error in
+            guard let self else {
+                return
+            }
+
+            if let error {
+                self.errorMessage = "There was an issue logging in. Please double check your email and password."
+            }
+        }
     }
 
     private func validate() -> Bool {
