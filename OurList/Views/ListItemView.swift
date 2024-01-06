@@ -19,24 +19,42 @@ struct ListItemView: View {
     }
 
     var body: some View {
-        HStack {
-            VStack(alignment: .leading) {
-                Text(listItem.name)
-                    .font(.body)
-                    .bold()
-                Text("\(Date(timeIntervalSince1970: listItem.dueDate).formatted(date: .abbreviated, time: .shortened))")
-                    .font(.footnote)
-                    .foregroundStyle(.gray)
-            }
-            Spacer()
+        ZStack {
+            HStack {
+                VStack(alignment: .leading) {
+                    Text(listItem.name)
+                        .font(.body)
+                        .bold()
+                    Text("\(Date(timeIntervalSince1970: listItem.dueDate).formatted(date: .abbreviated, time: .omitted))")
+                        .font(.footnote)
+                        .foregroundStyle(.gray)
+                }
+                .padding()
+                Spacer()
 
-            Button {
-                viewModel.toggleIsDone(item: listItem)
-            } label: {
-                Image(systemName: listItem.isDone ? "checkmark.circle.fill" : "circle")
-                    .foregroundColor(.blue)
+                Button {
+                    // add step of claiming before toggling if the item is done
+                    viewModel.toggleIsDone(item: listItem)
+                } label: {
+                    let name = listItem.isDone ? "checkmark.circle.fill" : "circle"
+                    let color: Color = listItem.isDone ? .green : .black
+                    Image(systemName: name)
+                        .foregroundColor(color)
+                }
+                .padding()
+                .buttonStyle(.plain)
             }
         }
+        .background(
+            RoundedRectangle(cornerRadius: 8.0)
+                .foregroundColor(.white)
+                .shadow(radius: 2)
+        )
+        .padding(.init(
+            top: 2.0,
+            leading: 4.0,
+            bottom: 2.0,
+            trailing: 4.0))
     }
 }
 

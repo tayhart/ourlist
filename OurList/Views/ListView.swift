@@ -70,15 +70,16 @@ struct ListView: View {
                 ListItemView(
                     listId: viewModel.listId,
                     listItem: item)
-                    .swipeActions {
-                        Button {
-                            //Delete
-                            viewModel.deleteItem(item.id)
-                        } label: {
-                            Text("Delete")
-                        }
-                        .tint(.red)
+                .listRowSeparator(.hidden)
+                .swipeActions {
+                    Button {
+                        //Delete
+                        viewModel.deleteItem(item.id)
+                    } label: {
+                        Text("Delete")
                     }
+                    .tint(.red)
+                }
             }
             .listStyle(.plain)
         }
@@ -96,5 +97,5 @@ struct ListView: View {
 }
 
 #Preview {
-    ListView(listId: "942DC81F-29B2-4AB8-B7AC-D8CCDCBAE307", color: "")
+    ListView(listId: "845395D7-94A9-41CA-B328-DA7916763279", color: "")
 }
