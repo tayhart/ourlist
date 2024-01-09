@@ -63,6 +63,7 @@ class ListViewModel: ObservableObject {
                             name: item["name"] as? String ?? "",
                             dueDate: item["dueDate"] as? TimeInterval ?? Date().timeIntervalSince1970,
                             createdDate: item["createdDate"] as? TimeInterval ?? Date().timeIntervalSince1970,
+                            notes: item["notes"] as? String ?? "",
                             isDone: item["isDone"] as! Bool)
                     }
                 }

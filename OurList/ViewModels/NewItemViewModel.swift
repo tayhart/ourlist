@@ -11,6 +11,7 @@ import Foundation
 
 class NewItemViewModel: ObservableObject {
     @Published var title = ""
+    @Published var notes = ""
     @Published var dueDate = Date()
     @Published var showAlert = false
 
@@ -32,6 +33,7 @@ class NewItemViewModel: ObservableObject {
             name: title,
             dueDate: dueDate.timeIntervalSince1970,
             createdDate: Date().timeIntervalSince1970,
+            notes: notes,
             isDone: false)
 
         // Save Model

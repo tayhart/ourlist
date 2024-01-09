@@ -20,35 +20,42 @@ struct NewItemView: View {
 
     var body: some View {
         VStack {
-            Text("New item")
-                .font(.system(size: 32))
+            Text("Add task")
+                .font(.title)
                 .bold()
-                .padding()
 
-            Form {
+            VStack {
                 // Title
                 TextField("Title", text: $viewModel.title)
-                    .textFieldStyle(.automatic)
-                // Due Date
-                DatePicker("Due date", selection: $viewModel.dueDate)
-                    .datePickerStyle(.graphical)
+                    .textFieldStyle(.roundedBorder)
 
-                // button
-                OLButton(title: "Save", background: .pink) {
-                    if viewModel.canSave {
-                        viewModel.save()
-                        newItemPresented = false
-                    } else {
-                        viewModel.showAlert = true
-                    }
+                // Due Date
+                DatePicker("Due date", selection: $viewModel.dueDate, displayedComponents: .date)
+                    .datePickerStyle(.compact)
+
+                // Notes
+                TextField("Add notes", text: $viewModel.notes, axis: .vertical)
+                    .textFieldStyle(.roundedBorder)
+                    .lineLimit(5...10)
+
+            }.padding()
+
+            // button
+            OLButton(title: "Add task", background: .purple) {
+                if viewModel.canSave {
+                    viewModel.save()
+                    newItemPresented = false
+                } else {
+                    viewModel.showAlert = true
                 }
-                .padding()
             }
-            .alert(isPresented: $viewModel.showAlert) {
-                Alert(
-                    title: Text("Error"),
-                    message: Text("Please fill in all fields and select a viable due date."))
-            }
+            .frame(maxHeight: 42)
+            .padding()
+        }
+        .alert(isPresented: $viewModel.showAlert) {
+            Alert(
+                title: Text("Error"),
+                message: Text("Please fill in all fields and select a viable due date."))
         }
     }
 }

@@ -50,16 +50,18 @@ struct ListView: View {
             }
         }
         .sheet(isPresented: $showEditListModal) {
-            EditListView(
-                listModel: viewModel,
-                onDeletion: {
-                    // add closure and only dismiss on success, otherwise add toast
-                    // to notify user that operation was not successful
-                    viewModel.deleteList()
-                    dismiss()
-                    showEditListModal.toggle()
-                },
-                editListPresented: $showEditListModal)
+
+                EditListView(
+                    listModel: viewModel,
+                    onDeletion: {
+                        // add closure and only dismiss on success, otherwise add toast
+                        // to notify user that operation was not successful
+                        viewModel.deleteList()
+                        dismiss()
+                        showEditListModal.toggle()
+                    },
+                    editListPresented: $showEditListModal)
+                .presentationDetents([.medium])
         }
     }
 
@@ -92,6 +94,7 @@ struct ListView: View {
         }
         .sheet(isPresented: $viewModel.showingNewItemView) {
             NewItemView(listId: viewModel.listId, newItemPresented: $viewModel.showingNewItemView)
+                .presentationDetents([.medium])
         }
     }
 }

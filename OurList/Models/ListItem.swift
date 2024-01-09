@@ -12,6 +12,7 @@ struct ListItem: Hashable, Codable, Identifiable {
     var name: String
     let dueDate: TimeInterval
     let createdDate: TimeInterval
+    var notes: String
     var isDone: Bool
 
     mutating func setDone(_ state: Bool) {

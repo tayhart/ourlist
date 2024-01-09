@@ -65,6 +65,7 @@ struct ListItemView: View {
             id: "123",
             name: "Test",
             dueDate: Date().timeIntervalSince1970,
-            createdDate: Date().timeIntervalSince1970,
+            createdDate: Date().timeIntervalSince1970, 
+            notes: "Test notes",
             isDone: true))
 }
