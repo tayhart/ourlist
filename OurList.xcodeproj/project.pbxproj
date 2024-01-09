@@ -47,8 +47,8 @@
 		34D8B8002B2D720E00C5646D /* EditListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D8B7FF2B2D720E00C5646D /* EditListViewModel.swift */; };
 		34D8B8022B314DE700C5646D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D8B8012B314DE700C5646D /* User.swift */; };
 		34E61FFC2AE850F7005FF86E /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E61FFB2AE850F7005FF86E /* ProfileViewModel.swift */; };
-		34E61FFE2AE9A61C005FF86E /* NewItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E61FFD2AE9A61C005FF86E /* NewItemView.swift */; };
-		34E620002AE9A6D6005FF86E /* NewItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E61FFF2AE9A6D6005FF86E /* NewItemViewModel.swift */; };
+		34E61FFE2AE9A61C005FF86E /* ModifyItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E61FFD2AE9A61C005FF86E /* ModifyItemView.swift */; };
+		34E620002AE9A6D6005FF86E /* ModifyItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E61FFF2AE9A6D6005FF86E /* ModifyItemViewModel.swift */; };
 		34E620022AF85012005FF86E /* ListItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E620012AF85012005FF86E /* ListItemViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -110,8 +110,8 @@
 		34D8B7FF2B2D720E00C5646D /* EditListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditListViewModel.swift; sourceTree = "<group>"; };
 		34D8B8012B314DE700C5646D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		34E61FFB2AE850F7005FF86E /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
-		34E61FFD2AE9A61C005FF86E /* NewItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewItemView.swift; sourceTree = "<group>"; };
-		34E61FFF2AE9A6D6005FF86E /* NewItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewItemViewModel.swift; sourceTree = "<group>"; };
+		34E61FFD2AE9A61C005FF86E /* ModifyItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyItemView.swift; sourceTree = "<group>"; };
+		34E61FFF2AE9A6D6005FF86E /* ModifyItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyItemViewModel.swift; sourceTree = "<group>"; };
 		34E620012AF85012005FF86E /* ListItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -215,7 +215,7 @@
 				3490920E2ADDCC6100F22C3C /* RegistrationView.swift */,
 				349092172ADF60DC00F22C3C /* HeaderView.swift */,
 				349092192ADF6D1400F22C3C /* OLButton.swift */,
-				34E61FFD2AE9A61C005FF86E /* NewItemView.swift */,
+				34E61FFD2AE9A61C005FF86E /* ModifyItemView.swift */,
 				349490052B1CE6E9005E53C8 /* ListsOverviewView.swift */,
 				349490092B1CE976005E53C8 /* ListCardView.swift */,
 				3494900F2B1E34D8005E53C8 /* NewListView.swift */,
@@ -252,7 +252,7 @@
 				349092152ADF1C3100F22C3C /* RegistrationViewModel.swift */,
 				3490921E2ADFA79000F22C3C /* MainViewModel.swift */,
 				34E61FFB2AE850F7005FF86E /* ProfileViewModel.swift */,
-				34E61FFF2AE9A6D6005FF86E /* NewItemViewModel.swift */,
+				34E61FFF2AE9A6D6005FF86E /* ModifyItemViewModel.swift */,
 				34E620012AF85012005FF86E /* ListItemViewModel.swift */,
 				349490072B1CE759005E53C8 /* ListCardModel.swift */,
 				3494900B2B1CED24005E53C8 /* ListsOverviewViewModel.swift */,
@@ -415,14 +415,14 @@
 				34E61FFC2AE850F7005FF86E /* ProfileViewModel.swift in Sources */,
 				3490921C2ADF780100F22C3C /* EncodableUtil.swift in Sources */,
 				345C28E62AD4FC080045B756 /* ListItem.swift in Sources */,
-				34E61FFE2AE9A61C005FF86E /* NewItemView.swift in Sources */,
+				34E61FFE2AE9A61C005FF86E /* ModifyItemView.swift in Sources */,
 				34E620022AF85012005FF86E /* ListItemViewModel.swift in Sources */,
 				349092182ADF60DC00F22C3C /* HeaderView.swift in Sources */,
 				349490182B238B89005E53C8 /* ColorUtil.swift in Sources */,
 				349490062B1CE6E9005E53C8 /* ListsOverviewView.swift in Sources */,
 				345C28E32AD4FBCD0045B756 /* ListItemView.swift in Sources */,
 				34D8B8002B2D720E00C5646D /* EditListViewModel.swift in Sources */,
-				34E620002AE9A6D6005FF86E /* NewItemViewModel.swift in Sources */,
+				34E620002AE9A6D6005FF86E /* ModifyItemViewModel.swift in Sources */,
 				349490122B1E36E5005E53C8 /* NewListViewModel.swift in Sources */,
 				3494900C2B1CED24005E53C8 /* ListsOverviewViewModel.swift in Sources */,
 				3490921A2ADF6D1400F22C3C /* OLButton.swift in Sources */,

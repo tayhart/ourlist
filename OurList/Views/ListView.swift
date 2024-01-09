@@ -50,7 +50,6 @@ struct ListView: View {
             }
         }
         .sheet(isPresented: $showEditListModal) {
-
                 EditListView(
                     listModel: viewModel,
                     onDeletion: {
@@ -73,6 +72,10 @@ struct ListView: View {
                     listId: viewModel.listId,
                     listItem: item)
                 .listRowSeparator(.hidden)
+                .onTapGesture {
+                    viewModel.modificationType = .edit
+                    viewModel.itemId = item.id
+                }
                 .swipeActions {
                     Button {
                         //Delete
@@ -87,13 +90,17 @@ struct ListView: View {
         }
         .toolbar {
             Button {
-                viewModel.showingNewItemView = true
+                viewModel.modificationType = .add
             } label: {
                 Image(systemName: "plus")
             }
         }
-        .sheet(isPresented: $viewModel.showingNewItemView) {
-            NewItemView(listId: viewModel.listId, newItemPresented: $viewModel.showingNewItemView)
+        .sheet(isPresented: $viewModel.showingModifyItemView) {
+            ModifyItemView(
+                listId: viewModel.listId,
+                itemId: viewModel.itemId,
+                modification: viewModel.modificationType,
+                modifyItemPresented: $viewModel.showingModifyItemView)
                 .presentationDetents([.medium])
         }
     }

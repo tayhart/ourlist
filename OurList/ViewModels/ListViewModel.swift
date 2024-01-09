@@ -12,8 +12,26 @@ import SwiftUI
 
 class ListViewModel: ObservableObject {
     @Published var listName: String = ""
-    @Published var showingNewItemView: Bool = false
+    @Published var showingModifyItemView: Bool = false {
+        didSet {
+            guard showingModifyItemView else {
+                itemId = nil
+                return
+            }
+        }
+    }
     @Published var listId: String
+    var itemId: String?
+    @Published var modificationType: ModificationType {
+        didSet {
+            switch modificationType {
+                case .add, .edit:
+                    showingModifyItemView.toggle()
+                case .unknown:
+                    showingModifyItemView = false
+            }
+        }
+    }
     var colorHex: String
     @Published var items = [ListItem]()
 
@@ -25,6 +43,7 @@ class ListViewModel: ObservableObject {
     init(listId: String, color: String) {
         self.listId = listId
         self.colorHex = color
+        self.modificationType = .unknown
         fetchListData()
     }
 
