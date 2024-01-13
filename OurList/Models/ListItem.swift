@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct ListItem: Hashable, Codable, Identifiable {
     let id: String
@@ -14,6 +15,19 @@ struct ListItem: Hashable, Codable, Identifiable {
     let createdDate: TimeInterval
     var notes: String
     var isDone: Bool
+
+    var dueDateColor: Color {
+        let today = Date()
+        let due = Date(timeIntervalSince1970: dueDate)
+
+        if today < due {
+            return .green
+        } else if due == today {
+            return .orange
+        } else {
+            return .red
+        }
+    }
 
     mutating func setDone(_ state: Bool) {
         isDone = state

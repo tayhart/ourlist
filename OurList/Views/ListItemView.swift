@@ -25,11 +25,19 @@ struct ListItemView: View {
                     Text(listItem.name)
                         .font(.body)
                         .bold()
+
+
                     Text("\(Date(timeIntervalSince1970: listItem.dueDate).formatted(date: .abbreviated, time: .omitted))")
                         .font(.footnote)
-                        .foregroundStyle(.gray)
+                        .foregroundStyle(listItem.dueDateColor)
+                        .padding(.init(top: 1, leading: 0, bottom: 2, trailing: 0))
+
+                    Text(listItem.notes)
+                        .font(.footnote)
+                        .lineLimit(2)
                 }
                 .padding()
+                
                 Spacer()
 
                 Button {
@@ -60,7 +68,7 @@ struct ListItemView: View {
 
 #Preview {
     ListItemView(
-        listId: "",
+        listId: "123",
         listItem: ListItem(
             id: "123",
             name: "Test",
